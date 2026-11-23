@@ -649,8 +649,8 @@ h1 {
 }
 
 .achievement-slide img {
-  width: 160px;
-  height: 104px;
+  width: 190px;
+  height: 124px;
   border: 1px solid var(--line);
   border-radius: 12px;
   object-fit: cover;
@@ -666,6 +666,39 @@ h1 {
   font-weight: 800;
   letter-spacing: 0.05em;
   line-height: 1.4;
+}
+
+.achievement-caption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 0.3em;
+}
+
+.caption-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(10px) rotateX(-35deg);
+  filter: blur(5px);
+  animation:
+    caption-reveal 560ms cubic-bezier(0.22, 1, 0.36, 1) both,
+    caption-shimmer 2400ms ease-in-out infinite;
+  animation-delay:
+    calc(70ms + var(--word-index) * 55ms),
+    calc(700ms + var(--word-index) * 40ms);
+}
+
+.achievement-caption::after {
+  content: '';
+  flex-basis: 100%;
+  max-width: 150px;
+  height: 2px;
+  margin-top: 6px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, var(--blue), transparent);
+  opacity: 0;
+  transform: scaleX(0.3);
+  animation: caption-line 900ms ease 620ms both;
 }
 
 .carousel-dots {
@@ -1030,6 +1063,51 @@ h1 {
   }
 }
 
+@keyframes caption-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) rotateX(-35deg);
+    filter: blur(5px);
+    color: var(--blue);
+    text-shadow: 0 0 14px rgba(37, 99, 235, 0.45);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-3px) rotateX(0);
+    filter: blur(0);
+    color: var(--blue);
+    text-shadow: 0 0 18px rgba(37, 99, 235, 0.4);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+    filter: blur(0);
+    color: var(--ink-soft);
+    text-shadow: 0 0 0 rgba(37, 99, 235, 0);
+  }
+}
+
+@keyframes caption-shimmer {
+  0%,
+  100% {
+    text-shadow: 0 0 0 rgba(37, 99, 235, 0);
+  }
+  50% {
+    text-shadow: 0 0 12px rgba(37, 99, 235, 0.35);
+  }
+}
+
+@keyframes caption-line {
+  from {
+    opacity: 0;
+    transform: scaleX(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
 @media (max-width: 760px) {
   .carousel-container {
     width: min(100% - 24px, 1180px);
@@ -1063,8 +1141,8 @@ h1 {
   }
 
   .achievement-slide img {
-    width: 116px;
-    height: 78px;
+    width: 132px;
+    height: 88px;
   }
 
   .achievement-slide p {
@@ -1122,8 +1200,22 @@ h1 {
   .field,
   .form-message,
   .achievement-slide.slide-next,
-  .achievement-slide.slide-prev {
+  .achievement-slide.slide-prev,
+  .caption-word,
+  .achievement-caption::after {
     animation: none;
+  }
+
+  .caption-word {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    color: var(--ink-soft);
+  }
+
+  .achievement-caption::after {
+    opacity: 1;
+    transform: none;
   }
 
   .carousel-arrow,

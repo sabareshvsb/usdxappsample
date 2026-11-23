@@ -69,7 +69,18 @@ export default function AchievementCarousel() {
         <div className="carousel-viewport">
           <div className={`achievement-slide slide-${direction}`} key={`${activeIndex}-${direction}`}>
             <img src={activeSlide.image} alt="" />
-            <p>{activeSlide.caption}</p>
+            <p className="achievement-caption" aria-label={activeSlide.caption}>
+              {activeSlide.caption.split(' ').map((word, index) => (
+                <span
+                  className="caption-word"
+                  key={`${word}-${index}`}
+                  style={{ '--word-index': index }}
+                  aria-hidden="true"
+                >
+                  {word}
+                </span>
+              ))}
+            </p>
           </div>
         </div>
 
