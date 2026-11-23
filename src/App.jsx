@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import SignInPage from './components/SignInPage'
 import SegmentedControl from './components/SegmentedControl'
 import DailyVolumeSection from './components/charts/DailyVolumeSection'
 import MonthlyVolumeSection from './components/charts/MonthlyVolumeSection'
@@ -16,6 +17,16 @@ const RANGE_OPTIONS = [
 ]
 
 export default function App() {
+  const [isSignedIn, setIsSignedIn] = useState(false)
+
+  if (!isSignedIn) {
+    return <SignInPage onContinue={() => setIsSignedIn(true)} />
+  }
+
+  return <Dashboard />
+}
+
+function Dashboard() {
   const [range, setRange] = useState('30d')
   const feed = useLeaderFeed()
   const { me, top } = selectLeaders(feed)
