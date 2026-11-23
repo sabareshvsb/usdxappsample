@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import AchievementCarousel from './components/AchievementCarousel'
 import SignInPage from './components/SignInPage'
 import SegmentedControl from './components/SegmentedControl'
 import DailyVolumeSection from './components/charts/DailyVolumeSection'
@@ -19,11 +20,20 @@ const RANGE_OPTIONS = [
 export default function App() {
   const [isSignedIn, setIsSignedIn] = useState(false)
 
-  if (!isSignedIn) {
-    return <SignInPage onContinue={() => setIsSignedIn(true)} />
-  }
-
-  return <Dashboard />
+  return (
+    <div className="app-view">
+      <div className="carousel-region">
+        <div className="carousel-container">
+          <AchievementCarousel />
+        </div>
+      </div>
+      {isSignedIn ? (
+        <Dashboard />
+      ) : (
+        <SignInPage onContinue={() => setIsSignedIn(true)} />
+      )}
+    </div>
+  )
 }
 
 function Dashboard() {

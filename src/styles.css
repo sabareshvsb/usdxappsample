@@ -543,13 +543,28 @@ h1 {
   }
 }
 
-.signin-shell {
+.app-view {
   min-height: 100vh;
-  padding: 18px 0 52px;
+  background: #f8fafc;
+}
+
+.carousel-region {
+  padding: 20px 0 22px;
   background:
-    radial-gradient(circle at 8% 0%, #eff6ff 0, transparent 32%),
-    radial-gradient(circle at 92% 10%, #ecfdf5 0, transparent 28%),
+    radial-gradient(circle at 10% 0%, #eff6ff 0, transparent 38%),
+    radial-gradient(circle at 90% 20%, #ecfdf5 0, transparent 32%),
     #f8fafc;
+}
+
+.carousel-container {
+  width: min(100% - 40px, 1180px);
+  margin: 0 auto;
+}
+
+.signin-shell {
+  min-height: calc(100vh - 180px);
+  padding: 0 0 52px;
+  background: transparent;
 }
 
 .signin-container {
@@ -559,14 +574,14 @@ h1 {
 
 .achievement-strip {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) 58px;
+  grid-template-columns: auto minmax(0, 1fr) 78px;
   align-items: center;
-  gap: 14px;
-  padding: 10px 14px;
+  gap: 18px;
+  padding: 16px 20px;
   border: 1px solid var(--line);
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 8px 24px rgba(16, 24, 40, 0.05);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 12px 34px rgba(16, 24, 40, 0.07);
   backdrop-filter: blur(12px);
   animation: card-enter 520ms ease both;
 }
@@ -574,9 +589,9 @@ h1 {
 .achievement-label {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 9px;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -587,18 +602,18 @@ h1 {
   display: flex;
   min-width: 0;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 }
 
 .carousel-arrow {
   display: grid;
-  width: 26px;
-  height: 26px;
-  flex: 0 0 26px;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
   place-items: center;
   padding: 0;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 10px;
   background: #ffffff;
   color: var(--ink-soft);
   cursor: pointer;
@@ -621,7 +636,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
   text-align: center;
 }
 
@@ -634,36 +649,36 @@ h1 {
 }
 
 .achievement-slide img {
-  width: 68px;
-  height: 48px;
+  width: 160px;
+  height: 104px;
   border: 1px solid var(--line);
-  border-radius: 9px;
+  border-radius: 12px;
   object-fit: cover;
   object-position: center top;
-  box-shadow: 0 4px 12px rgba(16, 24, 40, 0.08);
+  box-shadow: 0 8px 20px rgba(16, 24, 40, 0.12);
 }
 
 .achievement-slide p {
-  max-width: 560px;
+  max-width: 760px;
   margin: 0;
   color: var(--ink-soft);
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 800;
-  letter-spacing: 0.04em;
-  line-height: 1.35;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
 }
 
 .carousel-dots {
   display: flex;
-  max-width: 58px;
+  max-width: 78px;
   flex-wrap: wrap;
   justify-content: flex-end;
-  gap: 4px;
+  gap: 6px;
 }
 
 .carousel-dot {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   padding: 0;
   border: 0;
   border-radius: 999px;
@@ -673,7 +688,7 @@ h1 {
 }
 
 .carousel-dot.active {
-  width: 16px;
+  width: 22px;
   background: var(--blue);
 }
 
@@ -1016,22 +1031,44 @@ h1 {
 }
 
 @media (max-width: 760px) {
+  .carousel-container {
+    width: min(100% - 24px, 1180px);
+  }
+
   .signin-container {
     width: min(100% - 24px, 1040px);
   }
 
+  .carousel-region {
+    padding: 12px 0 16px;
+  }
+
   .signin-shell {
-    padding: 12px 0 36px;
+    padding: 0 0 36px;
   }
 
   .achievement-strip {
-    grid-template-columns: minmax(0, 1fr) 52px;
+    grid-template-columns: minmax(0, 1fr) 64px;
     gap: 8px;
-    padding: 9px 11px;
+    padding: 12px;
+    border-radius: 16px;
   }
 
   .achievement-label {
     display: none;
+  }
+
+  .carousel-shell {
+    gap: 6px;
+  }
+
+  .achievement-slide img {
+    width: 116px;
+    height: 78px;
+  }
+
+  .achievement-slide p {
+    font-size: 11px;
   }
 
   .signin-card {
@@ -1069,13 +1106,13 @@ h1 {
 
 @media (max-width: 420px) {
   .achievement-slide p {
-    font-size: 9px;
+    font-size: 10px;
   }
 
   .carousel-arrow {
-    width: 22px;
-    height: 22px;
-    flex-basis: 22px;
+    width: 28px;
+    height: 28px;
+    flex-basis: 28px;
   }
 }
 

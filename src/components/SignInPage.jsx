@@ -1,6 +1,5 @@
 import { useMemo, useState } from 'react'
 import { ArrowRight, Eye, EyeOff, ShieldCheck, Shuffle } from 'lucide-react'
-import AchievementCarousel from './AchievementCarousel'
 import { createLeaderChoices } from '../lib/leaderNames'
 
 const RANKS = [
@@ -131,8 +130,6 @@ export default function SignInPage({ onContinue }) {
   return (
     <div className="signin-shell">
       <div className="signin-container">
-        <AchievementCarousel />
-
         <main className="signin-card">
           <header className="signin-header">
             <div>
